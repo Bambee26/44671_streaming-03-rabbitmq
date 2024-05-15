@@ -103,15 +103,15 @@ We can execute additional commands in the terminal as soon as it finishes.
 1. Read v1_listen_for_messages.py (and the tutorial)
 1. Run the file.
 
-You'll need to fix an error in the program to get it to run.
-Once it runs successfully, will it terminate on its own? How do you know? 
+You'll need to fix an error in the program to get it to run. Error was localhost with multiple extra Os
+Once it runs successfully, will it terminate on its own? How do you know? It will not, terminal states to exit press ctrl + C
 As long as the process is running, we cannot use this terminal for other commands. 
 
 ## Task 8. Open a New Terminal / Emit More Messages
 
 1. Open a new terminal window.
 1. Use this new window to run emit_message.py again.
-1. Watch the listing terminal - what do you see?  A second message?
+1. Watch the listing terminal - what do you see?  A second message?  [*] Waiting for messages. To exit press CTRL+C
 
 Sending the same message each time is kind of boring. This time:
 

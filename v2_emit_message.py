@@ -33,11 +33,12 @@ def send_message(host: str, queue_name: str, message: str):
     This process runs and finishes.
 
     Parameters:
+        host (str): the RabbitMQ server host
         queue_name (str): the name of the queue
         message (str): the message to be sent to the queue
-
     """
 
+    conn = None
     try:
         # create a blocking connection to the RabbitMQ server
         conn = pika.BlockingConnection(pika.ConnectionParameters(host))
@@ -57,13 +58,17 @@ def send_message(host: str, queue_name: str, message: str):
     except pika.exceptions.AMQPConnectionError as e:
         logger.error(f"Error: Connection to RabbitMQ server failed: {e}")
         sys.exit(1)
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        sys.exit(1)
     finally:
-        # close the connection to the server
-        conn.close()
+        if conn:
+            # close the connection to the server
+            conn.close()
 
 
 # ---------------------------------------------------------------------------
 # If this is the script we are running, then call some functions and execute code!
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
-    send_message("llllocalhost", "hello", "Hello World!")
+    send_message("localhost", "hello", "Hello World!")
