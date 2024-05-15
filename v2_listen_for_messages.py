@@ -1,5 +1,4 @@
 """
-
 Message listener 
 
 Description:
@@ -11,7 +10,6 @@ Remember:
 - Use Control + C to close a terminal and end the listening process.
 - Use the up arrow to recall the last command executed in the terminal.
 """
-
 
 # Import necessary modules from the Python Standard Library
 import sys
@@ -28,7 +26,6 @@ logger, logname = setup_logger(__file__)
 # ---------------------------------------------------------------------------
 # Define program functions (bits of reusable code)
 # ---------------------------------------------------------------------------
-
 
 def process_message(ch, method, properties, body):
     """
@@ -47,12 +44,13 @@ def process_message(ch, method, properties, body):
     """
     logger.info(f"Received: {body.decode()}")
 
-
 # define a main function to run the program
 # pass in the hostname as a string parameter if you like
 # if no argument is provided, set a default value to localhost
-def main(hn: str = "localhosttt"):
+def main(hn: str = "localhost"):
     """Main program entry point."""
+
+    connection = None
 
     # when a statement can go wrong, use a try-except block
     try:
@@ -60,16 +58,6 @@ def main(hn: str = "localhosttt"):
         # create a blocking connection to the RabbitMQ server
         connection = pika.BlockingConnection(pika.ConnectionParameters(host=hn))
 
-    # except, if there's an error, do this
-    except Exception as e:
-        logger.error()
-        logger.error("ERROR: connection to RabbitMQ server failed.")
-        logger.error(f"Verify the server is running on host={hn}.")
-        logger.error(f"The error says: {e}")
-        logger.error()
-        sys.exit(1)
-
-    try:
         # use the connection to create a communication channel
         channel = connection.channel()
 
@@ -88,20 +76,22 @@ def main(hn: str = "localhosttt"):
         # start consuming messages via the communication channel
         channel.start_consuming()
 
-    # except, in the event of an error OR user stops the process, do this
+    # except, if there's an error, do this
+    except pika.exceptions.AMQPConnectionError as e:
+        logger.error(f"ERROR: connection to RabbitMQ server failed: {e}")
+        logger.error(f"Verify the server is running on host={hn}.")
+        sys.exit(1)
     except Exception as e:
-        logger.error(
-            "ERROR: An issue occurred while setting up or listening for messages."
-        )
+        logger.error("ERROR: An issue occurred while setting up or listening for messages.")
         logger.error(f"Error Details: {e}")
         sys.exit(1)
     except KeyboardInterrupt:
         logger.warning("User interrupted the listening process.")
         sys.exit(0)
     finally:
-        logger.info("Closing connection. Goodbye.")
-        connection.close()
-
+        if connection:
+            logger.info("Closing connection. Goodbye.")
+            connection.close()
 
 # ---------------------------------------------------------------------------
 # If this is the script we are running, then call some functions and execute code!

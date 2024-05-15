@@ -1,0 +1,12 @@
+2024-05-15 13:57:16,471.v2_listen_for_messages.INFO ==================================================
+2024-05-15 13:57:16,471.v2_listen_for_messages.INFO Today is 2024-05-15 at 01:57 PM
+2024-05-15 13:57:16,471.v2_listen_for_messages.INFO Running on: nt Windows 10
+2024-05-15 13:57:16,471.v2_listen_for_messages.INFO Python version:  3.11.9
+2024-05-15 13:57:16,472.v2_listen_for_messages.INFO Python path: C:\Users\bambe\OneDrive\Documents\NMSU\44671_StreamingData\Module_3\44671_streaming-03-rabbitmq\.venv
+2024-05-15 13:57:16,472.v2_listen_for_messages.INFO Working dir: C:\Users\bambe\OneDrive\Documents\NMSU\44671_StreamingData\Module_3\44671_streaming-03-rabbitmq
+2024-05-15 13:57:16,472.v2_listen_for_messages.INFO ==================================================
+2024-05-15 13:57:16,487.v2_listen_for_messages.INFO  [*] Waiting for messages. To exit press CTRL+C
+2024-05-15 13:57:16,487.v2_listen_for_messages.INFO Received: Hello World!
+2024-05-15 13:57:16,488.v2_listen_for_messages.INFO Received: Hello California!
+2024-05-15 13:57:16,488.v2_listen_for_messages.INFO Received: Hello doggie friends: Stewie, Archie, Honey & Missy!
+2024-05-15 13:57:16,488.v2_listen_for_messages.INFO Received: Message #4 (not creative)!

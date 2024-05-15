@@ -107,7 +107,7 @@ We can execute additional commands in the terminal as soon as it finishes.
 1. Read v1_listen_for_messages.py (and the tutorial)
 1. Run the file.
 
-You'll need to fix an error in the program to get it to run. Error was localhost with multiple extra Os
+You'll need to fix an error in the program to get it to run. - Error was localhost with multiple extra Os
 Once it runs successfully, will it terminate on its own? How do you know? It will not, terminal states to exit press ctrl + C
 As long as the process is running, we cannot use this terminal for other commands. 
 
@@ -119,8 +119,8 @@ As long as the process is running, we cannot use this terminal for other command
 
 Sending the same message each time is kind of boring. This time:
 
-1. Where is the message defined? How can you change it?
-1. Modify emit_message.py to emit a different message. 
+1. Where is the message defined? How can you change it? print(" [x] Sent 'Hello World!'") Change the text between the ' '; Also here: body="Hello World!") Change the text between " "
+1. Modify emit_message.py to emit a different message. print(" [x] Sent 'Hello World - message 2!'")
 1. Execute the updated emit_message.py. 
 1. Watch what happens in the listening terminal.
 
